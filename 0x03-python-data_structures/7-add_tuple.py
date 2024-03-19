@@ -7,8 +7,3 @@ def add_tuple(tuple_a=(), tuple_b=()):
     # Perform addition
     result = (tuple_a[0] + tuple_b[0], tuple_a[1] + tuple_b[1])
     return result
-
-# Example usage:
-tuple1 = (1, 2)
-tuple2 = (3, 4)
-print(add_tuple(tuple1, tuple2)) 
