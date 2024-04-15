@@ -13,8 +13,4 @@ def inherits_from(obj, a_class):
     True if the object is an instance of a subclass
     of the specified class, False otherwise.
     """
-    if obj.__class__ == a_class:
-        return False
-    if obj.__class__.__name__ == 'object':
-        return False
-    return inherits_from(obj.__class__.__base__, a_class)
+    return isinstance(obj, a_class) and type(obj) != a_class
