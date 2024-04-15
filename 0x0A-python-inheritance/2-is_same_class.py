@@ -8,4 +8,4 @@ def is_same_class(obj, a_class):
             obj (object): the object to list.
             a_class (class): instance of class.
     """
-    return type(obj) == a_class
+    return type(obj) is a_class
