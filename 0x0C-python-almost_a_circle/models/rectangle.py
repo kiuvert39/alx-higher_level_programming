@@ -25,7 +25,7 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        '''height of this rectangle.'''
+        '''Height of this rectangle.'''
         return self.__height
 
     @height.setter
@@ -40,6 +40,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
+        self.validate_integer("x", value)
         self.__x = value
 
     @property
@@ -49,14 +50,17 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
-        self.validate_integer("y", value, False)
+        self.validate_integer("y", value)
         self.__y = value
 
     def validate_integer(self, name, value, eq=True):
         '''Method for validating the value.'''
-        if not isinstance(value, int):
+        if type(value) != int:
             raise TypeError("{} must be an integer".format(name))
-        if eq and value <= 0:
-            raise ValueError("{} must be > 0".format(name))
-        elif not eq and value < 0:
+        if eq and value < 0:
             raise ValueError("{} must be >= 0".format(name))
+        elif not eq and value <= 0:
+            raise ValueError("{} must be > 0".format(name))
+
+    def area(self):
+        return self.width * self.height
