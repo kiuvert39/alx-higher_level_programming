@@ -12,46 +12,53 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
-
     @property
     def width(self):
-        '''Width of this rectangle.'''
-        return self.__width
+        return self._width
 
     @width.setter
     def width(self, value):
-        self.validate_integer("width", value, False)
-        self.__width = value
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        elif value <= 0:
+            raise ValueError("width must be > 0")
+        self._width = value
 
     @property
     def height(self):
-        '''Height of this rectangle.'''
-        return self.__height
+        return self._height
 
     @height.setter
     def height(self, value):
-        self.validate_integer("height", value, False)
-        self.__height = value
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        elif value <= 0:
+            raise ValueError("height must be > 0")
+        self._height = value
 
     @property
     def x(self):
-        '''x of this rectangle.'''
-        return self.__x
+        return self._x
 
     @x.setter
     def x(self, value):
-        self.validate_integer("x", value)
-        self.__x = value
+        if not isinstance(value, int):
+            raise TypeError("x must be an integer")
+        elif value < 0:
+            raise ValueError("x must be >= 0")
+        self._x = value
 
     @property
     def y(self):
-        '''y of this rectangle.'''
-        return self.__y
+        return self._y
 
     @y.setter
     def y(self, value):
-        self.validate_integer("y", value)
-        self.__y = value
+        if not isinstance(value, int):
+            raise TypeError("y must be an integer")
+        elif value < 0:
+            raise ValueError("y must be >= 0")
+        self._y = value
 
     def validate_integer(self, name, value, eq=True):
         '''Method for validating the value.'''
